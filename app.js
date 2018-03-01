@@ -10,7 +10,7 @@ var users = require('./app_server/routes/users');
 
 var app = express();
 
-// view engine setup tells the middleWare where to find the views for the app
+// View engine setup tells the middleWare where to find the views for the app
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'jade');
 
