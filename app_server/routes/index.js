@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-// response.render compiles the view template to send to HTML response 
-var homePageController = function(request, response) {
-    response.render('index', {title: 'Express'});
-}
+// here reuired main controller file main.js
+var controllerMain = require('../controllers/main') 
 
 /* GET home page. */
-router.get('/', homePageController);
+// reference index method of controllers in route definition
+router.get('/', controllerMain.index);
 
 module.exports = router;
