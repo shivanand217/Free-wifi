@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-// here reuired main controller file main.js
+// here required main controller file main.js
 var controllerMain = require('../controllers/main') 
 
 /* GET home page. */
