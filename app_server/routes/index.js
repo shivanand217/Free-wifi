@@ -1,12 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
-// here required main controller file main.js
-var controllerMain = require('../controllers/main') 
+// changing main controller to the two other controllers
+//var controllerMain = require('../controllers/main') 
+var controllerLocations = require('../controllers/locations');
+var controllerOthers = require('../controllers/others');
 
-/* GET home page. */
+/* Location Pages 
+   Defining Location routes and map them to controller functions
+*/
+router.get('/', controllerLocations.homelist);
+router.get('/locations', controllerLocations.locationInfo);
+router.get('/location/review/new', controllerLocations.addReview);
+
+/* Other pages */
+router.get('/about', controllerOthers.about); // define other routes
 
 // reference index method of controllers in route definition
-router.get('/', controllerMain.index);
+// router.get('/', controllerMain.index);
 
 module.exports = router;
