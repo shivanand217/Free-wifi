@@ -8,7 +8,8 @@ module.exports.homelist = function(req, res) {
 /** Get location-info page */
 // location-info page controller
 module.exports.locationInfo = function(req, res) {
-    res.render('index', {title: 'Location Info'});
+    // first argument is view to this controller and second is the title to the page
+    res.render('location-info', {title: 'Location Info'});
 };
 
 /** Get Add-Review page */
