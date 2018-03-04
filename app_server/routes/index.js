@@ -6,7 +6,8 @@ var router = express.Router();
 var controllerLocations = require('../controllers/locations');
 var controllerOthers = require('../controllers/others');
 
-/* Location Pages 
+/* 
+   Location Pages 
    Defining Location routes and map them to controller functions
 */
 router.get('/', controllerLocations.homelist);
