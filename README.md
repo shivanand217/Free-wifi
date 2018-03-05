@@ -8,5 +8,5 @@
 > I am working on it.
 
 > Screen 
-  ![Screen1](../master/free-wifi1.jpg)
+  ![Screen1](../master/free-wifi.jpg)
   ![Screen1](../master/free-wifi2.jpg)
