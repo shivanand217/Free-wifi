@@ -17,7 +17,5 @@ router.get('/location/review/new', controllerLocations.addReview);
 /* Other pages */
 router.get('/about', controllerOthers.about); // define other routes
 
-// reference index method of controllers in route definition
-// router.get('/', controllerMain.index);
 
 module.exports = router;
