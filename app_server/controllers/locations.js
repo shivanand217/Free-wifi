@@ -13,6 +13,7 @@ module.exports.homelist = function(request, response) {
         greetings: 'Hey !! Nice to see you. This App is Under Construction... Please Visit later...',
 
         title: 'Free-wifi Find a place to work with wifi',
+        
         pageHeader: {
             title: 'Free-wifi',
             strapline: 'Find places to work with wifi near you!'

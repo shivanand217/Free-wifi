@@ -1,5 +1,9 @@
 extends layout
 
+// mixin is used
+// this is included in our sharedHTMLfunctions.jade
+include _includes/sharedHTMLfunctions
+
 block content
     #banner.page-header
         br
@@ -12,19 +16,15 @@ block content
             .col-xs-12.col-sm-8
                 .row.list-group
                     // getting each location from locations array
-                    - for(var k = 0; k < locations.length; k++) {
+                    - for( var k = 0; k < locations.length; k++ ) {
                         .col-xs-12.list-group-item
                             h4
                                 span.information
                                     a(href="/locations") &nbsp; #{locations[k].name} &nbsp; &nbsp;
                                 span.ratings #{locations[k].rating.val}.#{locations[k].rating.dec} &nbsp; &nbsp;
-                                
-                                - for(var i = 0; i < locations[k].rating.val; i++) {
-                                    span.glyphicon.glyphicon-star        
-                                - }
-                                - for(var i = 0; i < 5 - locations[k].rating.val; i++) {
-                                    span.glyphicon.glyphicon-star-empty
-                                - }
+
+                                +outputRating(locations[k].rating)
+
                                 &nbsp;
                                 if locations[k].rating.val >= 3
                                     span.glyphicon.glyphicon-thumbs-up &nbsp;
