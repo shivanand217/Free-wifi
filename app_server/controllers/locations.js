@@ -10,9 +10,10 @@
 
 module.exports.homelist = function(request, response) {
     response.render('locations-list', {
+        
         greetings: 'Hey !! Nice to see you. This App is Under Construction... Please Visit later...',
 
-        title: 'Free-wifi Find a place to work with wifi',
+        title: 'Free-wifi',
         
         pageHeader: {
             title: 'Free-wifi',
