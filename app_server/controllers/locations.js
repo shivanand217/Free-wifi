@@ -83,3 +83,4 @@ module.exports.locationInfo = function(request, response) {
 module.exports.addReview = function(request, response) {
     response.render('location-review-form', {title: 'Add Review'});
 };
+
