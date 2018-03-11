@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var readline = require('readline');
 var gracefulShutdown;
 
+/**  */
 if(process.platform === "win32") {
     var rl = readline.createInterface({
         input: process.stdin,
@@ -18,6 +19,9 @@ if(process.platform === "win32") {
 var dbURI = 'mongodb://localhost/Wifi';
 mongoose.connect(dbURI);
 
+/** mongoose connection events 
+ *  connected, error and disconnected
+ * */
 mongoose.connection.on('connected',function() {
     console.log('Mongoose connected to '+ dbURI);
 });
