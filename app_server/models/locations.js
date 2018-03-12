@@ -1,3 +1,4 @@
+import { ObjectId } from '../../../../../Users/shiva/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/bson';
 
 var mongoose = require('mongoose');
 
@@ -56,20 +57,22 @@ var locationsSchema = new mongoose.Schema ({
 mongoose.model('Location', locationsSchema);
 
 
+/** adding data in reviews */
 
 db.locations.update ({
-    name: 'Cafe-Coffee-Day'
+    name: 'Barista Lavazza'
 }, {
     $push: {
         reviews: {
-            author: 'Shahrukh',
+            author: 'Jhon',
             id: ObjectId(),
-            rating: 2,
-            timestamp: new Date("March 12, 2018"),
-            reviewText: "Coffee was not so good. Wifi was great."     
+            rating: 4,
+            timestamp: new Date("March 13, 2018"),
+            reviewText: "Coffee was not so good. Wifi was great."
         }
     }
 })
+
 
 /* db.locations.update ({
     name: 'Coffee World'
@@ -79,10 +82,10 @@ db.locations.update ({
 )*/
 
 db.locations.save ({
-    name:'Cafe-Coffee-Day',
-    address:'Mani Square, No.164/1, Maniktala, Eastern Metropolitan Bypass, Kolkata, West-Bengal - 700054',
+    name: 'Barista Lavazza',
+    address: 'Block EP & GP, Sector V, Bidhan Nagar, 24 Pgns, Salt Lake, Kolkata, West-Bengal - 700064',
     rating: 4,
-    facilities: ['Hot Drinks','Food','Premium wifi'],
+    facilities: ['Snacks','Food','Premium wifi'],
     coords: [-0.9690884, 51.455041], 
     openingTimes:[
         {days: 'Monday - Friday',opening: '7:00am',closing: '7:00pm',closed: false},
