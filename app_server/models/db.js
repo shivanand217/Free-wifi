@@ -2,23 +2,6 @@ var mongoose = require('mongoose');
 var readline = require('readline');
 var gracefulShutdown;
 
-/**
- * Mongoose Allowed Schema types
- * 
- * String : Any string, UTF-8 encoded
-   Number: Mongoose doesn’t support long or double numbers, but it can be
-   extended to do so using Mongoose plugins; the default support is enough for 
-   most cases
-   Date: Typically returned from MongoDB as an ISODate object
-   Boolean: True or false
-   Buffer: For binary information such as images
-   Mixed: Any data type
-   Array: Can either be an array of the same data type, or an array of nested subdocuments
-   ObjectId: For a unique ID in a path other than _id; typically used to reference
-   _id paths in other documents
- 
-  */
-
 if(process.platform === "win32") {
     var rl = readline.createInterface({
         input: process.stdin,
