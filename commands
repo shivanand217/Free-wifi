@@ -1,9 +1,16 @@
 // important commands I have encountered during the journey of making this application
 
+
+// **************** is the password to the MONGOLAB
 // my MONGOLAB_URI = mongodb://shivanand217:***********@ds113169.mlab.com:13169/wifi
 
+-- set MONGOLAB_URI to heroku
+   heroku config:set MONGOLAB_URI = your_db_uri
 
--- For dumping local mongoDB database
+-- get MONGOLAB_URI from heroku
+   heroku config:get MONGOLAB_URI
+
+-- To create a database dump of local mongoDB database in a file
    mongodump --db database name --out path
    eg: mongodump --db mydb --out c:\TEMP\op.json
 
@@ -11,7 +18,7 @@
    -- The command expects "Database Username" in -u not Log-in username.
    -- "Database Username" can be found in "Users" tab for a database
    mongorestore -h ds113169.mlab.com:13169 -d wifi -u shivanand217 -p ************ C:\tmp\mongodump\dump\wifi
-
+   
 
 -- for connecting to LIVE database
    mongo ds113169.mlab.com:13169/wifi -u shivanand217 -p ***************
@@ -23,3 +30,4 @@
 
 -- You can read NODE_ENV from anywhere in the application by using the following
    statement:  process.env.NODE_ENV
+

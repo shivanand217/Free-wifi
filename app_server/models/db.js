@@ -7,7 +7,7 @@ if(process.platform === "win32") {
         input: process.stdin,
         output: process.stdout
     });
-    rl.on("SIGINT",function(){
+    rl.on("SIGINT", function() {
         process.emit("SIGINT");
     });
 }
@@ -16,6 +16,10 @@ if(process.platform === "win32") {
 // using database URI for our database
 
 var dbURI = 'mongodb://localhost/wifi';
+
+if (process.env.NODE_ENV === 'production') {
+    dbURI = process.env.MONGOLAB_URI;
+}
 mongoose.connect(dbURI);
 
 /** mongoose connection events 
