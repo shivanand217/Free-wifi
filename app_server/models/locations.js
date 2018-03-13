@@ -55,7 +55,6 @@ var locationsSchema = new mongoose.Schema ({
 mongoose.model('Location', locationsSchema);
 
 
-
 /** adding data in reviews */
 
 /**
@@ -63,8 +62,9 @@ mongoose.model('Location', locationsSchema);
  *  Some mongo command tests
  * */
 
-/*   db.locations.update ({
-    name: 'India Coffee House'
+/** 
+db.locations.update ({
+    name: 'The Café Store (Golpark)'
 }, {
     $push: {
         reviews: {
@@ -78,18 +78,18 @@ mongoose.model('Location', locationsSchema);
 })
 
 
- db.locations.update ({
-    name: 'Coffee World'
+db.locations.update ({
+    name: 'Citrus - The Coffee Shop'
 }, {
     $pop: { reviews: 1 } 
    } 
 )
 
 db.locations.save ({
-    name: 'India Coffee House',
-    address: 'Chittaranjan Avenue, Chandni Chawk, Bowbazar, Kolkata, West-Bengal - 700072',
+    name: 'The Café Store (Golpark)',
+    address: '5A, Ballygunge Terrace, Dhakuria, Kankulia, Kolkata, West-Bengal - 700029',
     rating: 5,
-    facilities: ['Premium wifi','Beer','Food'],
+    facilities: ['Premium wifi','Coffee','Cold Drinks'],
     coords: [-0.9690884, 51.455041], 
     openingTimes:[
         {days: 'Monday - Friday',opening: '7:00am',closing: '7:00pm',closed: false},
@@ -97,5 +97,4 @@ db.locations.save ({
         {days: 'Sunday',closed: true}]
     }
 ) 
-
-*/
+ **/
