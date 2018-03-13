@@ -1,7 +1,19 @@
+// important commands I have encountered during the journey of making this application
 
-// important commands i have encountered during the journey of making this application
+// my MONGOLAB_URI = mongodb://shivanand217:***********@ds113169.mlab.com:13169/wifi
+
 
 
 -- For dumping local mongoDB database
    mongodump --db database name --out path
    eg: mongodump --db mydb --out c:\TEMP\op.json
+
+
+-- pushing database LIVE
+   -- The command expects "Database Username" in -u not Log-in username.
+   -- "Database Username" can be found in "Users" tab for a database
+   mongorestore -h ds113169.mlab.com:13169 -d wifi -u shivanand217 -p ************ C:\tmp\mongodump\dump\wifi
+
+
+-- for connecting to LIVE database
+   mongo ds113169.mlab.com:13169/wifi -u shivanand217 -p ***************
