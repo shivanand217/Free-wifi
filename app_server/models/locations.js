@@ -1,5 +1,3 @@
-import { ObjectId } from '../../../../../Users/shiva/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/bson';
-
 var mongoose = require('mongoose');
 
 /**
@@ -57,14 +55,20 @@ var locationsSchema = new mongoose.Schema ({
 mongoose.model('Location', locationsSchema);
 
 
+
 /** adding data in reviews */
 
-db.locations.update ({
-    name: 'Barista Lavazza'
+/**
+ * 
+ *  Some mongo command tests
+ * */
+
+/*   db.locations.update ({
+    name: 'India Coffee House'
 }, {
     $push: {
         reviews: {
-            author: 'Jhon',
+            author: 'Shiv',
             id: ObjectId(),
             rating: 4,
             timestamp: new Date("March 13, 2018"),
@@ -74,23 +78,24 @@ db.locations.update ({
 })
 
 
-/* db.locations.update ({
+ db.locations.update ({
     name: 'Coffee World'
 }, {
     $pop: { reviews: 1 } 
-    } 
-)*/
+   } 
+)
 
 db.locations.save ({
-    name: 'Barista Lavazza',
-    address: 'Block EP & GP, Sector V, Bidhan Nagar, 24 Pgns, Salt Lake, Kolkata, West-Bengal - 700064',
-    rating: 4,
-    facilities: ['Snacks','Food','Premium wifi'],
+    name: 'India Coffee House',
+    address: 'Chittaranjan Avenue, Chandni Chawk, Bowbazar, Kolkata, West-Bengal - 700072',
+    rating: 5,
+    facilities: ['Premium wifi','Beer','Food'],
     coords: [-0.9690884, 51.455041], 
     openingTimes:[
         {days: 'Monday - Friday',opening: '7:00am',closing: '7:00pm',closed: false},
         {days: 'Saturday',opening: '8:00am',closing: '5:00pm',closed:false},
         {days: 'Sunday',closed: true}]
     }
-)
-    
+) 
+
+*/

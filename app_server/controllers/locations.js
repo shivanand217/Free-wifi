@@ -49,7 +49,7 @@ module.exports.homelist = function(request, response) {
             distance: '300m'
         },{
             name: 'India Coffee House',
-            address: 'Chittaranjan Ave, Chandni Chawk, Bowbazar, Kolkata, West-Bengal - 700072',
+            address: 'Chittaranjan Avenue, Chandni Chawk, Bowbazar, Kolkata, West-Bengal - 700072',
             rating: {val: 4,dec: 5},
             reviews: '19 reviews',
             facilities: ['Premium wifi','Beer','Food'],
