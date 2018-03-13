@@ -1,4 +1,7 @@
 
--- For dumping local database
+// important commands i have encountered during the journey of making this application
+
+
+-- For dumping local mongoDB database
    mongodump --db database name --out path
    eg: mongodump --db mydb --out c:\TEMP\op.json
