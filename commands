@@ -3,11 +3,9 @@
 // my MONGOLAB_URI = mongodb://shivanand217:***********@ds113169.mlab.com:13169/wifi
 
 
-
 -- For dumping local mongoDB database
    mongodump --db database name --out path
    eg: mongodump --db mydb --out c:\TEMP\op.json
-
 
 -- pushing database LIVE
    -- The command expects "Database Username" in -u not Log-in username.
@@ -17,3 +15,11 @@
 
 -- for connecting to LIVE database
    mongo ds113169.mlab.com:13169/wifi -u shivanand217 -p ***************
+
+-- The NODE_ENV environment variable
+-- Ensuring Heroku is using production mode
+   heroku config:set NODE_ENV=production
+
+
+-- You can read NODE_ENV from anywhere in the application by using the following
+   statement:  process.env.NODE_ENV

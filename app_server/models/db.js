@@ -15,7 +15,7 @@ if(process.platform === "win32") {
 // creating a mongoose connection
 // using database URI for our database
 
-var dbURI = 'mongodb://localhost/Wifi';
+var dbURI = 'mongodb://localhost/wifi';
 mongoose.connect(dbURI);
 
 /** mongoose connection events 
