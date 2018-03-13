@@ -1,0 +1,4 @@
+
+-- For dumping local database
+   mongodump --db database name --out path
+   eg: mongodump --db mydb --out c:\TEMP\op.json

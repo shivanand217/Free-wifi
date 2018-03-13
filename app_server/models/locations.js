@@ -54,6 +54,13 @@ var locationsSchema = new mongoose.Schema ({
 // first one is model into which we want to convert our Schema
 mongoose.model('Location', locationsSchema);
 
+/** MongoLab credentials 
+ * 
+ *  username: shivanand217
+ *  password: 21071996prakash
+ *  server address: ds113169.mlab.com
+ *  port: 13169
+ *  database name: wifi
 
 /** adding data in reviews */
 
