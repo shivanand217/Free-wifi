@@ -31,7 +31,7 @@
 
 --  creating REST-API for using MONGODB database
     Action                     =  URL path    =  Example    
-    Create new location        =  /locations  = http://Free-wifi.com/api/locations
+    Create new location        =  /locations  = http://Free-wif.com/api/locations
     Read list of locations     =  /locations  = http://Free-wifi.com/api/locations
     Read a specific location   =  /locationslocationid =  http://Free-wifi.com/api/locations/123
     Update a specific location =  /locations/locationid = http://Free-wifi.com/api/locations/123
