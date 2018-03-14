@@ -12,6 +12,8 @@ if(process.platform === "win32") {
     });
 }
 
+process.env.NODE_ENV = 'production';
+
 // creating a mongoose connection
 // using database URI for our database
 

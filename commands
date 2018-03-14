@@ -18,7 +18,6 @@
    -- The command expects "Database Username" in -u not Log-in username.
    -- "Database Username" can be found in "Users" tab for a database
    mongorestore -h ds113169.mlab.com:13169 -d wifi -u shivanand217 -p ************ C:\tmp\mongodump\dump\wifi
-   
 
 -- for connecting to LIVE database
    mongo ds113169.mlab.com:13169/wifi -u shivanand217 -p ***************
