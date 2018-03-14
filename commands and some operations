@@ -1,0 +1,62 @@
+// important commands I have encountered during the journey of making this application
+
+// **************** is the password to the MONGOLAB
+// My MONGOLAB_URI = mongodb://shivanand217:***********@ds113169.mlab.com:13169/wifi
+
+-- set MONGOLAB_URI to heroku
+   heroku config:set MONGOLAB_URI = your_db_uri
+
+-- get MONGOLAB_URI from heroku
+   heroku config:get MONGOLAB_URI
+
+-- To create a database dump of local mongoDB database in a file
+   mongodump --db database name --out path
+   eg: mongodump --db mydb --out c:\TEMP\op.json
+
+-- pushing database LIVE
+   -- The command expects "Database Username" in -u not Log-in username.
+   -- "Database Username" can be found in "Users" tab for a database
+   mongorestore -h ds113169.mlab.com:13169 -d wifi -u shivanand217 -p ************ C:\tmp\mongodump\dump\wifi
+
+-- for connecting to LIVE database
+   mongo ds113169.mlab.com:13169/wifi -u shivanand217 -p ***************
+
+-- The NODE_ENV environment variable
+-- Ensuring Heroku is using production mode
+   heroku config:set NODE_ENV=production
+
+
+-- You can read NODE_ENV from anywhere in the application by using the following
+   statement:  process.env.NODE_ENV
+
+--  creating REST-API for using MONGODB database
+    Action                     =  URL path    =  Example    
+    Create new location        =  /locations  = http://Free-wifi.com/api/locations
+    Read list of locations     =  /locations  = http://Free-wifi.com/api/locations
+    Read a specific location   =  /locationslocationid =  http://Free-wifi.com/api/locations/123
+    Update a specific location =  /locations/locationid = http://Free-wifi.com/api/locations/123
+    Delete a specific location =  /locations/locationid = http://Free-wifi.com/api/locations/123
+
+
+-- API URLS for sub documents
+   Action                   | method  |    URL path                               |  Example
+   
+   Create new review        | POST    |   /locations/locationid/reviews           |  http://loc8r.com/api/locations/123/reviews
+   Read a specific review   | GET     |   /locations/locationid/reviews/reviewid  |  http://loc8r.com/api/locations/123/reviews/abc
+   Update a specific review | PUT     |   /locations/locationid/reviews/reviewid  |  http://loc8r.com/api/locations/123/reviews/abc
+   Delete a specific review | DELETE  |   /locations/locationid/reviews/reviewid  |  http://loc8r.com/api/locations/123/reviews/abc
+
+
+-- status codes
+
+    200 OK = A successful GET or PUT request
+    201 Created =  A successful POST request
+    204 No content =  A successful DELETE request
+    400 Bad request  = An unsuccessful GET, POST, or PUT request, due to invalid content
+    401 Unauthorized =  Requesting a restricted URL with incorrect credentials
+    403 Forbidden =  Making a request that isn’t allowed
+    404 Not found =  Unsuccessful request due to an incorrect parameter in the URL
+    405 Method not allowed =  Request method not allowed for the given URL
+    409 Conflict =  Unsuccessful POST request when another object already exists with the same data
+    500 Internal server error = Problem with your server or the database server
+
