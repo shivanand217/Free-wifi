@@ -13,7 +13,7 @@ module.exports.homelist = function(request, response) {
         
         greetings: 'Hey !! Nice to see you. This App is Under Construction... Please Visit later...',
 
-        title: 'Free-wifi',
+        title: 'Free - wifi',
         
         pageHeader: {
             title: 'Free-wifi',

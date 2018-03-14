@@ -8,14 +8,17 @@ var bodyParser = require('body-parser');
 // requiring our application database
 require('./app_server/models/db');
 
-var index = require('./app_server/routes/index');
+var routes = require('./app_server/routes/index');
 var users = require('./app_server/routes/users');
+
+var routesAPI = require('./app_api/routes/index');
 
 var app = express();
 
 // View engine setup tells the middleWare where to find the views for the app
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'jade');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -26,8 +29,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // this requires route index.js on homepage
-app.use('/', index);
+app.use('/', routes);
 app.use('/users', users);
+
+app.use('/api', routesAPI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
