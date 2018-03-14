@@ -41,10 +41,10 @@
 -- API URLS for sub documents
    Action                   | method  |    URL path                               |  Example
    
-   Create new review        | POST    |   /locations/locationid/reviews           |  http://loc8r.com/api/locations/123/reviews
-   Read a specific review   | GET     |   /locations/locationid/reviews/reviewid  |  http://loc8r.com/api/locations/123/reviews/abc
-   Update a specific review | PUT     |   /locations/locationid/reviews/reviewid  |  http://loc8r.com/api/locations/123/reviews/abc
-   Delete a specific review | DELETE  |   /locations/locationid/reviews/reviewid  |  http://loc8r.com/api/locations/123/reviews/abc
+   Create new review        | POST    |   /locations/locationid/reviews           |  http://Free-wifi.com/api/locations/123/reviews
+   Read a specific review   | GET     |   /locations/locationid/reviews/reviewid  |  http://Free-wifi.com/api/locations/123/reviews/abc
+   Update a specific review | PUT     |   /locations/locationid/reviews/reviewid  |  http://Free-wifi.com/api/locations/123/reviews/abc
+   Delete a specific review | DELETE  |   /locations/locationid/reviews/reviewid  |  http://Free-wifi.com/api/locations/123/reviews/abc
 
 
 -- status codes
