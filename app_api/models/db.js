@@ -3,7 +3,7 @@ var readline = require('readline');
 var gracefulShutdown;
 
 if(process.platform === "win32") {
-    var rl = readline.createInterface({
+    var rl = readline.createInterface ({
         input: process.stdin,
         output: process.stdout
     });
@@ -12,7 +12,7 @@ if(process.platform === "win32") {
     });
 }
 
-process.env.NODE_ENV = 'production';
+//process.env.NODE_ENV = 'production';
 
 // creating a mongoose connection
 // using database URI for our database

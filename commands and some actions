@@ -1,6 +1,7 @@
 // important commands during the journey of making this application
 
 // **************** is the password to the MONGOLAB
+
 // My MONGOLAB_URI = mongodb://shivanand217:***********@ds113169.mlab.com:13169/wifi
 
 -- set MONGOLAB_URI to heroku
@@ -39,7 +40,7 @@
 
 
 -- API URLS for sub documents
-   Action                   | method  |    URL path                               |  Example
+   Action                   | methods |    URL path                               |  Example
    
    Create new review        | POST    |   /locations/locationid/reviews           |  http://Free-wifi.com/api/locations/123/reviews
    Read a specific review   | GET     |   /locations/locationid/reviews/reviewid  |  http://Free-wifi.com/api/locations/123/reviews/abc
@@ -47,7 +48,7 @@
    Delete a specific review | DELETE  |   /locations/locationid/reviews/reviewid  |  http://Free-wifi.com/api/locations/123/reviews/abc
 
 
--- status codes
+--  status codes
 
     200 OK = A successful GET or PUT request
     201 Created =  A successful POST request
@@ -60,9 +61,9 @@
     409 Conflict =  Unsuccessful POST request when another object already exists with the same data
     500 Internal server error = Problem with your server or the database server
 
--- Mongoose query methods
--- Mongoose models have several methods available to them to help with querying the
-   database. Here are some of the key ones:
+--  Mongoose query methods
+--  Mongoose models have several methods available to them to help with querying the
+    database. Here are some of the key ones:
 
     ■ find: General search based on a supplied query object
     ■ findById: Look for a specific ID
@@ -71,6 +72,18 @@
     ■ geoSearch: Add query functionality to a geoNear operation
 
 
+
+--  mongoose database query
+
+    Model.findById(locationId)
+    to start the database query operation Mongoose models have an exec method
+
+    the exec() method executes the query and passes a callback function that will run 
+    when the operation will complete. The callback function should accept two parameters 
+    
+    error:  object(that will tell if there is any error in querying the database)
+    object_returned: the instance of the object returned while querying the database
+    
 
 
 /** MongoLab credentials 
