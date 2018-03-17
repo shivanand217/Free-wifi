@@ -53,56 +53,5 @@ var locationsSchema = new mongoose.Schema ({
 
 // Compile Schema into model
 // first one is model into which we want to convert our Schema
+// this is used when we want our api to talk to the database
 mongoose.model('Location', locationsSchema);
-
-/** MongoLab credentials 
- * 
- *  username: shivanand217
- *  password: 21071996prakash
- *  server address: ds113169.mlab.com
- *  port: 13169
- *  database name: wifi
-
-/** adding data in reviews */
-
-/**
- * 
- *  Some mongo command tests
- * */
-
-/** 
-db.locations.update ({
-    name: 'The Café Store (Golpark)'
-}, {
-    $push: {
-        reviews: {
-            author: 'Shiv',
-            id: ObjectId(),
-            rating: 4,
-            timestamp: new Date("March 13, 2018"),
-            reviewText: "Coffee was not so good. Wifi was great."
-        }
-    }
-})
-
-
-db.locations.update ({
-    name: 'Citrus - The Coffee Shop'
-}, {
-    $pop: { reviews: 1 } 
-   } 
-)
-
-db.locations.save ({
-    name: 'The Café Store (Golpark)',
-    address: '5A, Ballygunge Terrace, Dhakuria, Kankulia, Kolkata, West-Bengal - 700029',
-    rating: 5,
-    facilities: ['Premium wifi','Coffee','Cold Drinks'],
-    coords: [-0.9690884, 51.455041], 
-    openingTimes:[
-        {days: 'Monday - Friday',opening: '7:00am',closing: '7:00pm',closed: false},
-        {days: 'Saturday',opening: '8:00am',closing: '5:00pm',closed:false},
-        {days: 'Sunday',closed: true}]
-    }
-) 
- **/

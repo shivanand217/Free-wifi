@@ -60,3 +60,65 @@
     409 Conflict =  Unsuccessful POST request when another object already exists with the same data
     500 Internal server error = Problem with your server or the database server
 
+-- Mongoose query methods
+-- Mongoose models have several methods available to them to help with querying the
+   database. Here are some of the key ones:
+
+    ■ find: General search based on a supplied query object
+    ■ findById: Look for a specific ID
+    ■ findOne: Get the first document to match the supplied query
+    ■ geoNear: Find places geographically close to the provided latitude and longitude
+    ■ geoSearch: Add query functionality to a geoNear operation
+
+
+
+
+/** MongoLab credentials 
+ * 
+ *  username: shivanand217
+ *  password: 21071996prakash
+ *  server address: ds113169.mlab.com
+ *  port: 13169
+ *  database name: wifi
+
+/** adding data in reviews */
+
+/**
+ * 
+ *  Some mongo command tests
+ * */
+
+db.locations.update ({
+    name: 'The Café Store (Golpark)'
+}, {
+    $push: {
+        reviews: {
+            author: 'Shiv',
+            id: ObjectId(),
+            rating: 4,
+            timestamp: new Date("March 13, 2018"),
+            reviewText: "Coffee was not so good. Wifi was great."
+        }
+    }
+})
+
+
+db.locations.update ({
+    name: 'Citrus - The Coffee Shop'
+}, {
+    $pop: { reviews: 1 } 
+   } 
+)
+
+db.locations.save ({
+    name: 'The Café Store (Golpark)',
+    address: '5A, Ballygunge Terrace, Dhakuria, Kankulia, Kolkata, West-Bengal - 700029',
+    rating: 5,
+    facilities: ['Premium wifi','Coffee','Cold Drinks'],
+    coords: [-0.9690884, 51.455041], 
+    openingTimes:[
+        {days: 'Monday - Friday',opening: '7:00am',closing: '7:00pm',closed: false},
+        {days: 'Saturday',opening: '8:00am',closing: '5:00pm',closed:false},
+        {days: 'Sunday',closed: true}]
+    }
+) 
