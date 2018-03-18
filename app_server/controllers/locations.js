@@ -11,7 +11,7 @@
 module.exports.homelist = function(request, response) {
     response.render('locations-list', {
         
-        greetings: 'Hey !! Nice to see you. This App is Under Construction... Please Visit later...',
+        greetings: 'Hey !! Nice to see you. This place is completely static:P ... Please Come back later ...',
 
         title: 'Free - wifi',
         

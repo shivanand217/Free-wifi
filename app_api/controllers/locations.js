@@ -58,7 +58,23 @@ module.exports.locationsListByDistance = function(request, response) {
         num: 10 // show top 10 nearest locations
     };
 
-    wifi.geoNear(point, geoOptions, callback);
+    // geoNear() params will be (point, options, callback)
+    wifi.geoNear(point, geoOptions, function(err, results, status) {
+        var locations = []; // to hold processed data
+
+        results.forEach( function(doc) {
+            locations.push ({
+                distance: theEarth.getDistanceFromRads(doc.dis),
+                name: doc.obj.name,
+                address: doc.obj.address,
+                rating: doc.obj.rating,
+                facilities: doc.obj.facilities,
+                _id: doc.obj._id
+            });
+        });
+        
+        sendJsonResponse(response, 200, locations);
+    });
     // sendJsonResponse(response, 200, {"status": "success!!!"});
 }
 
