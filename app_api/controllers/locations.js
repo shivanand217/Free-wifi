@@ -44,6 +44,7 @@ module.exports.locationsListByDistance = function(request, response) {
     // and create geoJSON point required by the geoNear function:
 
     // api/locations?lng=-0.799256256&lat=51.378566&dist=20
+
     var longitude = parseFloat(request.query.lng);
     var latitude = parseFloat(request.query.lat);
     var max_distance = parseInt(request.query.dist);
@@ -52,6 +53,7 @@ module.exports.locationsListByDistance = function(request, response) {
         type: "Point",
         coordinates: [longitude, latitude]
     };
+
     var geoOptions = {
         spherical: true,
         maxDistance: theEarth.getRadsFromDistance(max_distance),
@@ -72,7 +74,8 @@ module.exports.locationsListByDistance = function(request, response) {
                 _id: doc.obj._id
             });
         });
-        
+
+        // sending the obtained response
         sendJsonResponse(response, 200, locations);
     });
     // sendJsonResponse(response, 200, {"status": "success!!!"});
