@@ -28,8 +28,7 @@ module.exports.reviewsReadOne = function(request, response) {
 
     //sendJsonResponse(response, 200, {"status": "success!!!"});
     if(request.params && request.params.locationid && request.params.reviewid) {
-        wifi
-            .findById(request.params.locationid)
+        wifi.findById(request.params.locationid)
             .select('name reviews')
             .exec(function(err, location) {
                 var _response, _review;
@@ -61,7 +60,7 @@ module.exports.reviewsReadOne = function(request, response) {
                 }
             });
     } else {
-        sendJsonResponse(response 404, {"message": "Not found, locationid and reviewid are both required"});
+        sendJsonResponse(response, 404, {"message": "Not found, locationid and reviewid are both required"});
     }
 }
 
