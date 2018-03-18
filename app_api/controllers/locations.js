@@ -25,30 +25,43 @@ module.exports.locationsCreate = function(request, response) {
 module.exports.locationsReadOne = function(request, response) {
     // the parameters are held inside @param object attached to the request object
     // access the parameter with request.params.parameter_name
+    
     /* With our basic controller there are three errors we need to trap
        1.  The request parameters don't include 'locationid'
        2.  The 'findById' method doesn't return a location
        3.  The 'findById' method returns an error.
     */
     
+    
     if(request.params && request.params.locationid) {
-        wifi.findById(request.params.locationid)
-                .exec(function(err, location) {
+        wifi
+            .findById(request.params.locationid)
+            .exec(function(err, location) {
                     if(location === null) {
-                        sendJsonResponse(response, 404, {"message":"location not found"});
+                        sendJsonResponse(response, 404, {"message": "location not found"});
                         return;
                     } else if(err) {
                         sendJsonResponse(response, 404, err);
                         return;
                     } 
                     sendJsonResponse(response, 200, location);
-                })
+                });
     } else {
-        sendJsonResponse(response, 404, {"message": "no locationid in request"});
-    }
-    
-    //sendJsonResponse(response, 200, {"status": "success!!!"});
-}
+        sendJsonResponse(response, 404, {"message": "No locationid in request"});
+    }   
+}   
+
+/*
+wifi
+    .findById(request.params.locationid)
+    .select('name reviews')
+    .exec({
+        function(err, location) {
+            var review;
+            review = location.reviews.id(request.params.reviewid);
+        }
+    }); 
+*/
 
 module.exports.locationsUpdateOne = function(request, response) {
     sendJsonResponse(response, 200, {"status": "success!!!"});

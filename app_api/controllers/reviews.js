@@ -9,7 +9,7 @@ var wifi = mongoose.model('Location');
 // @params(arg1, arg2, arg3)
 // arg1 is response object
 // arg2 is response code
-// arg3 is response content which is either JSON or XML, i am using JSON content here
+// arg3 is response content which is either JSON or XML, i am using JSON response content here
 var sendJsonResponse = function(response, status, content) {
     response.status(status);
     response.json(content);
@@ -19,22 +19,57 @@ var sendJsonResponse = function(response, status, content) {
 // 200 is response code
 // XML or JSON content can be used
 
-// reviewsCreate
 module.exports.reviewsCreate = function(request, response) {
     sendJsonResponse(response, 200, {"status": "success!!!"});
 }
 
-// reviewsReadOne
+/** reading a single review */
 module.exports.reviewsReadOne = function(request, response) {
-    sendJsonResponse(response, 200, {"status": "success!!!"});
+
+    //sendJsonResponse(response, 200, {"status": "success!!!"});
+    if(request.params && request.params.locationid && request.params.reviewid) {
+        wifi
+            .findById(request.params.locationid)
+            .select('name reviews')
+            .exec(function(err, location) {
+                var _response, _review;
+                // errors for founding no locations
+                if(location === null) {
+                    sendJsonResponse(response, 404, {"message": "locationid not found"});
+                    return;
+                } else if(err) {
+                    sendJsonResponse(response, 404, err);
+                    return;
+                }
+
+                if(location.reviews && location.reviews.length > 0) {
+                    _review = location.reviews.id(request.params.reviewid);
+                    if(_review === null) {
+                        sendJsonResponse(response, 404, {"message": "review not found"});
+                    } else {
+                        _response = {
+                            location: {
+                                name: location.name,
+                                id: request.params.locationid
+                            },
+                            _review: _review
+                        };
+                        sendJsonResponse(response, 200, _response);
+                    }
+                } else {
+                    sendJsonResponse(response, 404, {"message": "No review found"});
+                }
+            });
+    } else {
+        sendJsonResponse(response 404, {"message": "Not found, locationid and reviewid are both required"});
+    }
 }
 
-// reviewsUpdateOne
 module.exports.reviewsUpdateOne = function(request, response) {
     sendJsonResponse(response, 200, {"status": "success!!!"});
 }
 
-// reviewsDeleteOne
+
 module.exports.reviewsDeleteOne = function(request, response) {
     sendJsonResponse(response, 200, {"status": "success!!!"});
 }

@@ -49,7 +49,6 @@
 
 
 --  status codes
-
     200 OK = A successful GET or PUT request
     201 Created =  A successful POST request
     204 No content =  A successful DELETE request
