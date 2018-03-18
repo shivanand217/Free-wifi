@@ -84,6 +84,13 @@
     object_returned: the instance of the object returned while querying the database
     
 
+-- finding multiple documents with geospatial queries
+    MongoDB and mongoose have some special geospatial query mthods to help find neaby places
+    Using mongoose method geoNear to find list of locations close to a specified points
+
+    
+
+
 
 /** MongoLab credentials 
  * 

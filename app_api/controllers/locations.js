@@ -2,6 +2,26 @@
 // the Locations model as 'wifi' at the top of the controller files
 
 var mongoose = require('mongoose');
+
+var theEarth = (function() {
+    var earthRadius = 6371; // in kilometers
+
+    var getDistanceFromRads = function(rads) {
+        return parseFloat(rads * earthRadius);
+    };  
+
+    // get the angle in radians
+    var getRadsFromDistance = function(distance) {
+        return parseFloat(distance / earthRadius);   // theta = (l / r)
+    };
+
+    var ret_value = {
+        getDistanceFromRads: getDistanceFromRads,
+        getRadsFromDistance: getRadsFromDistance
+    };
+})();
+
+
 // for talking to our database
 var wifi = mongoose.model('Location');
 
@@ -15,7 +35,28 @@ var sendJsonResponse = function(response, status, content) {
 }
 
 module.exports.locationsListByDistance = function(request, response) { 
-    sendJsonResponse(response, 200, {"status": "success!!!"});
+    // express gives access to the values in a query string
+    // putting them into a query object attached to the request object (request.query.lng)
+    // the longitude and latitude values will be strings when retreived but they need 
+    // to be added to the point object as numbers 
+    
+    // now we can get the coordinates of longitude and latitude from query strings 
+    // and create geoJSON point required by the geoNear function:
+    var longitude = parseFloat(request.query.lng);
+    var latitude = parseFloat(request.query.lat);
+
+    var point = {
+        type: "Point",
+        coordinates: [longitude, latitude]
+    };
+    var geoOptions = {
+        spherical: true,
+        maxDistance: theEarth.getRadsFromDistance(20),
+        num: 10 // show top 10 nearest locations
+    };
+
+    wifi.geoNear(point, geoOptions, callback);
+    // sendJsonResponse(response, 200, {"status": "success!!!"});
 }
 
 module.exports.locationsCreate = function(request, response) {
@@ -31,7 +72,6 @@ module.exports.locationsReadOne = function(request, response) {
        2.  The 'findById' method doesn't return a location
        3.  The 'findById' method returns an error.
     */
-    
     
     if(request.params && request.params.locationid) {
         wifi

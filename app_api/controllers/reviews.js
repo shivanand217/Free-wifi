@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 // for talking to our database
 var wifi = mongoose.model('Location');
 
-
 // @params(arg1, arg2, arg3)
 // arg1 is response object
 // arg2 is response code
@@ -26,8 +25,8 @@ module.exports.reviewsCreate = function(request, response) {
 /** reading a single review */
 module.exports.reviewsReadOne = function(request, response) {
 
-    //sendJsonResponse(response, 200, {"status": "success!!!"});
     if(request.params && request.params.locationid && request.params.reviewid) {
+
         wifi.findById(request.params.locationid)
             .select('name reviews')
             .exec(function(err, location) {
@@ -62,6 +61,7 @@ module.exports.reviewsReadOne = function(request, response) {
     } else {
         sendJsonResponse(response, 404, {"message": "Not found, locationid and reviewid are both required"});
     }
+    
 }
 
 module.exports.reviewsUpdateOne = function(request, response) {
