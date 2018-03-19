@@ -9,7 +9,6 @@ var theEarth = (function() {
     var getDistanceFromRads = function(rads) {
         return parseFloat(rads * earthRadius);
     };  
-
     // get the angle in radians
     var getRadsFromDistance = function(distance) {
         return parseFloat(distance / earthRadius);   // theta = (l / r)
@@ -32,7 +31,7 @@ var wifi = mongoose.model('Location');
 var sendJsonResponse = function(response, status, content) {
     response.status(status);
     response.json(content);
-}
+};
 
 module.exports.locationsListByDistance = function(request, response) { 
     // express gives access to the values in a query string
@@ -47,7 +46,7 @@ module.exports.locationsListByDistance = function(request, response) {
 
     var longitude = parseFloat(request.query.lng);
     var latitude = parseFloat(request.query.lat);
-    var max_distance = parseInt(request.query.dist);
+    var maxDistance = parseFloat(request.query.maxDistance);
 
     var point = {
         type: "Point",
@@ -56,34 +55,59 @@ module.exports.locationsListByDistance = function(request, response) {
 
     var geoOptions = {
         spherical: true,
-        maxDistance: theEarth.getRadsFromDistance(max_distance),
-        num: 10 // show top 10 nearest locations
+        maxDistance: 20,
+        num: 10 // will show top 10 nearest locations
     };
 
+    if( !longitude || !latitude) {
+        sendJsonResponse(response, 404, {"message": "longitude and latitude as a query parameters are required"});
+        return;
+    }   
+
+    console.log("locationListByDistance is running..");
+    wifi.aggregate ([{
+        '$geoNear': {
+            'near': point,
+            'spherical': true,
+            'distanceField': 'dist.calculated',
+            'maxDistance': maxDistance,
+            'num': 10
+        }
+    }], function(err, results) {
+        if(err) {
+            sendJsonResponse(response, 404, err);
+        } else {
+                locations = buildLocationList(request, response, results);
+                sendJsonResponse(response, 200,locations);
+        }
+    })
+
     // geoNear() params will be (point, options, callback)
-    wifi.geoNear(point, geoOptions, function(err, results, status) {
+    /*wifi.geoNear(point, geoOptions, function(err, results, status) {
         var locations = []; // to hold processed data
-
-        results.forEach( function(doc) {
-            locations.push ({
-                distance: theEarth.getDistanceFromRads(doc.dis),
-                name: doc.obj.name,
-                address: doc.obj.address,
-                rating: doc.obj.rating,
-                facilities: doc.obj.facilities,
-                _id: doc.obj._id
+        if(err) {
+            sendJsonResponse(response, 404, err);
+        } else {   
+            results.forEach( function(doc) {
+                locations.push ({
+                    distance: theEarth.getDistanceFromRads(doc.dis),
+                    name: doc.obj.name,
+                    address: doc.obj.address,
+                    rating: doc.obj.rating,
+                    facilities: doc.obj.facilities,
+                    _id: doc.obj._id
+                });
             });
-        });
+            // sending the obtained response
+            sendJsonResponse(response, 200, locations);
+        }
+    });*/
 
-        // sending the obtained response
-        sendJsonResponse(response, 200, locations);
-    });
-    // sendJsonResponse(response, 200, {"status": "success!!!"});
-}
+};
 
 module.exports.locationsCreate = function(request, response) {
     sendJsonResponse(response, 200, {"status": "success!!!"});
-}
+};
 
 module.exports.locationsReadOne = function(request, response) {
     // the parameters are held inside @param object attached to the request object
@@ -111,12 +135,15 @@ module.exports.locationsReadOne = function(request, response) {
     } else {
         sendJsonResponse(response, 404, {"message": "No locationid in request"});
     }   
-}   
+};
 
 module.exports.locationsUpdateOne = function(request, response) {
     sendJsonResponse(response, 200, {"status": "success!!!"});
-}
+};
 
 module.exports.locationsDeleteOne = function(request, response) {
     sendJsonResponse(response, 200, {"status": "success!!!"});
-}
+};
+
+-0.9690884,
+51.455041
