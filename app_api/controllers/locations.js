@@ -18,6 +18,7 @@ var theEarth = (function() {
         getDistanceFromRads: getDistanceFromRads,
         getRadsFromDistance: getRadsFromDistance
     };
+    
 })();
 
 
@@ -43,7 +44,6 @@ module.exports.locationsListByDistance = function(request, response) {
     // and create geoJSON point required by the geoNear function:
 
     // api/locations?lng=-0.799256256&lat=51.378566&dist=20
-
     var longitude = parseFloat(request.query.lng);
     var latitude = parseFloat(request.query.lat);
     var maxDistance = parseFloat(request.query.maxDistance);
@@ -64,7 +64,19 @@ module.exports.locationsListByDistance = function(request, response) {
         return;
     }   
 
-    console.log("locationListByDistance is running..");
+    console.log("locationsListByDistance is running..");
+    var buildLocationList = function(request, response, results) {
+        console.log("buildLocationList....");
+        var locations = [];
+        results.forEach(function(doc){
+            locations.push({
+                distance: doc.dist.calculated,
+                name: doc.name,
+
+            });
+        });
+    };
+
     wifi.aggregate ([{
         '$geoNear': {
             'near': point,
