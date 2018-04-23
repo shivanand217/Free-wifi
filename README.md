@@ -5,7 +5,7 @@
 > Looking for wifi and a seat? Free-wifi helps you find places to work when you're out
   Perhaps with coffee and snacks. Let Free-wifi help you find the place you're looking for.
 
-## UPDATE: > Due to Some reson i stopped working on it. Will Fix this app soon.
+## UPDATE:  Due to Some reson i stopped working on it. Will Fix this app soon.
 
 > Screen 
   ![Screen1](../master/free-wifi1.jpg)
